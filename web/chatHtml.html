@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Message App</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+        <script defer src="client.js"></script>
+        <style>
+            .containerOne{
+                padding-top: 10px;
+                max-width: 800px;
+                height: 480px;
+                overflow-y: auto;
+                background: lightblue;
+                margin: auto;
+            }
+            .containerSecond{
+                margin-top: 0px;
+                max-width: 800px;
+                margin: auto;
+            }
+            .message{
+                background-color: lightgray;
+                width: 24%;
+                padding: 10px;
+                margin: 17px 12px;
+                border: 2px solid black;                
+            }
+            .left{
+               float: left;
+               clear: both;
+            }
+            
+            .right{
+                float: right;
+                clear: both;
+            }
+            .navBar{
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="">
+                <nav>
+                <div class="nav-wrapper">
+                    <label class="brand-logo">Welcome&nbsp;
+                        <a href="#" class="brand-logo" id="useName"></a>
+                    </label> 
+                    
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="sass.html">Profile</a></li>
+                        <li><a href="badges.html">Logout</a></li>
+                    </ul>
+                </div>
+            </nav>
+            </div>
+            <div class="containerOne navBar">
+                
+            </div>
+            <div class="row center-align containerSecond">
+                <form class="col s12 " id="form-cont">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                            <label for="icon_prefix2">Message</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                        
+                    </button>
+                        <h1>${message}</h1>
+                    </div>
+                </form>
+            </div>
+        
+        </div>
+        <script >
+            const va = document.getElementById('useName');
+            va.innerHTML = `You : ${message}`;
+        </script>
+    </body>
+</html>

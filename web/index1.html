@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+<head>
+    <title>Chat Application</title>
+    <script type="text/javascript">
+        var webSocket;
+
+        function connect() {
+            webSocket = new WebSocket("ws://" + location.host + "/ChatWebSocket");
+            webSocket.onmessage = function (event) {
+                var message = event.data;
+                showMessage(message);
+            };
+        }
+
+        function sendMessage() {
+            var message = document.getElementById("message").value;
+            webSocket.send(message);
+            document.getElementById("message").value = "";
+        }
+
+        function showMessage(message) {
+            var chatArea = document.getElementById("chatArea");
+            var p = document.createElement("p");
+            p.textContent = message;
+            chatArea.appendChild(p);
+        }
+
+        function disconnect() {
+            webSocket.close();
+        }
+    </script>
+</head>
+<body onload="connect()">
+    <h1>Chat Application</h1>
+    <div id="chatArea"></div>
+    <input type="text" id="message" />
+    <button onclick="sendMessage()">Send</button>
+    <button onclick="disconnect()">Disconnect</button>
+</body>
+</html>
+
